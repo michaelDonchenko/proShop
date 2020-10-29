@@ -25,8 +25,15 @@ const CartScreen = ({ match, location, history }) => {
     dispatch(removeFromCart(id))
   }
 
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
+
   const checkoutHandler = () => {
-    history.push('/login?redirect=shipping')
+    if (userInfo) {
+      history.push('/shipping')
+    } else {
+      history.push('/login')
+    }
   }
 
   return (
