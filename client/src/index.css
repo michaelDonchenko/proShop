@@ -5,3 +5,13 @@ main {
 .rating span {
   margin: 0.05rem;
 }
+
+h2 {
+  padding: 10px 0;
+  font-size: 1.5rem;
+}
+
+h3 {
+  padding: 10px 0;
+  font-size: 1.2rem;
+}
