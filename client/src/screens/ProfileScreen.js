@@ -14,15 +14,21 @@ const ProfileScreen = ({ history }) => {
 
   return (
     <Row>
-      <Col sm={12} lg={4}>
+      <Col sm={12} lg={5}>
         <h3>User Profile</h3>
         {userInfo ? (
-          <ListGroup>
-            <ListGroup.Item>ID: {userInfo._id}</ListGroup.Item>
-            <ListGroup.Item>Name: {userInfo.name}</ListGroup.Item>
-            <ListGroup.Item>Email: {userInfo.email}</ListGroup.Item>
+          <ListGroup variant='flush'>
             <ListGroup.Item>
-              Admin: {userInfo.isAdmin ? 'True' : 'False'}
+              <p>ID: {userInfo._id}</p>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <p>Name: {userInfo.name}</p>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <p>Email: {userInfo.email}</p>
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <p> Admin: {userInfo.isAdmin ? 'True' : 'False'} </p>
             </ListGroup.Item>
           </ListGroup>
         ) : (
@@ -30,7 +36,7 @@ const ProfileScreen = ({ history }) => {
         )}
       </Col>
 
-      <Col sm={12} lg={8}>
+      <Col sm={12} lg={7}>
         <h3>My Orders</h3>
       </Col>
     </Row>

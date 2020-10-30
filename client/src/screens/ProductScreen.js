@@ -18,13 +18,17 @@ const ProductScreen = ({ match, history }) => {
     history.push(`/cart/${match.params.id}?qty=${qty}`)
   }
 
+  const goBackHandler = () => {
+    history.goBack()
+  }
+
   useEffect(() => {
     dispatch(listProductsDetails(match.params.id))
   }, [dispatch])
 
   return (
     <>
-      <Link to='/' className='btn btn-light my-3'>
+      <Link onClick={goBackHandler} className='btn btn-light my-3'>
         Go back
       </Link>
       {loading ? (
