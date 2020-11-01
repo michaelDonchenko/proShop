@@ -44,7 +44,7 @@ const CartScreen = ({ match, location, history }) => {
           <Message variant='info'>
             Your Cart is Empty
             <Link className='ml-2' to='/'>
-              Go Back
+              Back to Shopping
             </Link>
           </Message>
         ) : (
