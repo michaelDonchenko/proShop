@@ -34,6 +34,12 @@ const addOrderItems = asyncHandler(async (req, res) => {
   }
 })
 
+const decreaseQTY = asyncHandler(async () => {
+  req.body.orderItems.map(
+    (order) => (order.countInStock = order.countInStock - order.qty)
+  )
+})
+
 //GET ORDER BY ID
 const getOrderById = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id).populate(

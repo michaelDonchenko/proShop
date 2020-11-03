@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Button, Row, Col, ListGroup, Card } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import { CheckoutSteps } from '../components/CheckoutSteps'
 import { Link } from 'react-router-dom'
 import { createOrder } from '../actions/orderActions'
+import { clearCartItems } from '../actions/cartActions'
 import Message from '../components/Message'
 
 const PlaceOrder = ({ history }) => {
@@ -44,6 +45,7 @@ const PlaceOrder = ({ history }) => {
         totalPrice: cart.totalPrice,
       })
     )
+    dispatch(clearCartItems())
   }
 
   useEffect(() => {
