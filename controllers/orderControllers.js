@@ -34,12 +34,6 @@ const addOrderItems = asyncHandler(async (req, res) => {
   }
 })
 
-const decreaseQTY = asyncHandler(async () => {
-  req.body.orderItems.map(
-    (order) => (order.countInStock = order.countInStock - order.qty)
-  )
-})
-
 //GET ORDER BY ID
 const getOrderById = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id).populate(
@@ -89,4 +83,39 @@ const getLoggedinUserOrders = asyncHandler(async (req, res) => {
   }
 })
 
-export { addOrderItems, getOrderById, updateOrderToPaid, getLoggedinUserOrders }
+//GET ALL ORDERS
+const getOrders = asyncHandler(async (req, res) => {
+  const orders = await Order.find().populate('user', 'id name')
+
+  if (orders) {
+    res.json(orders)
+  } else {
+    res.status(404)
+    throw new Error('Orders not found')
+  }
+})
+
+//UPDATE ORDER TO DELIVERED
+const updateOrderToDelivered = asyncHandler(async (req, res) => {
+  const order = await Order.findById(req.params.id)
+
+  if (order) {
+    order.isDelivered = true
+    order.deliveredAt = Date.now()
+
+    const updateOrder = await order.save()
+    res.json(updateOrder)
+  } else {
+    res.status(404)
+    throw new Error('Order not found')
+  }
+})
+
+export {
+  addOrderItems,
+  getOrderById,
+  updateOrderToPaid,
+  getLoggedinUserOrders,
+  getOrders,
+  updateOrderToDelivered,
+}

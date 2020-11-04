@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom'
 
 const Product = ({ product }) => {
   return (
-    <Card className='my-3 p-3 rounded'>
-      <Link to={`/product/${product._id}`}>
-        <Card.Img src={product.image} />
+    <Card style={{ minHeight: '450px' }} className='my-3 p-3 rounded'>
+      <Link style={{ textAlign: 'center' }} to={`/product/${product._id}`}>
+        <Card.Img className='card-image' src={product.image} />
       </Link>
 
       <Card.Body>
